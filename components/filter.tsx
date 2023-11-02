@@ -44,8 +44,20 @@ const Filter: React.FC<FilterProps> = ({
             <Pressable
               key={option}
               onPress={() => handleSelectFilterOption(option)}
+              style={[
+                styles.button,
+                {
+                  backgroundColor:
+                    currentFilter === option ? "#33CC33" : "#fff",
+                  borderColor: currentFilter === option ? "#33CC33" : "",
+                },
+              ]}
             >
-              <Text>{option}</Text>
+              <Text
+                style={{ color: currentFilter === option ? "#fff" : "#000" }}
+              >
+                {option}
+              </Text>
             </Pressable>
           ))}
         </View>
@@ -63,7 +75,7 @@ const Filter: React.FC<FilterProps> = ({
             ? priceRange?.map((option, index) => (
                 <Picker.Item key={index} label={option} value={option} />
               ))
-            : categoryOptions.map((option, index) => (
+            : categoryOptions?.map((option, index) => (
                 <Picker.Item key={index} label={option} value={option} />
               ))}
         </Picker>
@@ -92,6 +104,16 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     gap: 8,
   },
+  button: {
+    // backgroundColor: "#fff",
+    padding: 4,
+    // borderColor: "#33CC33",
+    borderWidth: 1,
+    // borderStyle: "solid",
+    borderRadius: 2,
+  },
+
+  btnText: {},
 });
 
 export default Filter;

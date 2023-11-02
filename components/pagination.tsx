@@ -3,18 +3,33 @@ import { Pressable, StyleSheet, View, Text } from "react-native";
 
 interface PaginationProps {
   numbers: number[];
-  onClick: (page: number) => void;
+  currentPage: number;
+  onClick: (page: number, index: number) => void;
 }
-const Pagination: React.FC<PaginationProps> = ({ numbers, onClick }) => {
+const Pagination: React.FC<PaginationProps> = ({
+  currentPage,
+  numbers,
+  onClick,
+}) => {
   return (
     <View style={styles.wrapper}>
-      {numbers.map((number, index) => (
+      {numbers?.map((number, index) => (
         <Pressable
-          style={styles.button}
+          style={[
+            styles.button,
+            { backgroundColor: currentPage === index ? "#fff" : "#00BE00" },
+          ]}
           key={number}
-          onPress={() => onClick(number)}
+          onPress={() => onClick(number, index)}
         >
-          <Text style={styles.btnText}>{index + 1}</Text>
+          <Text
+            style={[
+              styles.btnText,
+              { color: currentPage === index ? "#00BE00" : "#fff" },
+            ]}
+          >
+            {index + 1}
+          </Text>
         </Pressable>
       ))}
     </View>
@@ -36,7 +51,6 @@ const styles = StyleSheet.create({
     width: 40,
     paddingTop: 8,
     paddingBottom: 8,
-    backgroundColor: "#00BE00",
     borderRadius: 2,
   },
 

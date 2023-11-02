@@ -14,35 +14,36 @@ export default function App() {
   const [selected, setSelected] = useState<string>("");
   const [filter, setFilter] = useState<string>("");
   const [filterState, setFilterState] = useState<string>("category");
-  const [cartIndexes, setCartIndexes] = useState<number[]>([]);
+  const [cartIndexes, setCartIndexes] = useState<string[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(0);
   const [page, setPage] = useState<{ start: number; end: number }>({
     start: 0,
     end: 5,
   });
-  console.log(cartIndexes);
 
   const handleFilterState = (option: string) => {
     setFilterState(option);
     setFilter("");
   };
 
-  const handlePages = (index: number) => {
+  const handlePages = (index: number, newPage: number) => {
     const rem: any = items.length % 5;
     setPage({
       start: index,
       end: index + 5 > items.length ? index + rem : index + 5,
     });
+    setCurrentPage(newPage);
   };
 
-  const handleCartIndexes = (num: number) => {
-    cartIndexes.includes(num)
+  const handleCartIndexes = (name: string) => {
+    cartIndexes.includes(name)
       ? setCartIndexes((prevIndexes) =>
-          prevIndexes.filter((item) => item !== num)
+          prevIndexes.filter((item) => item !== name)
         )
-      : setCartIndexes((prevIndexes) => [...prevIndexes, num]);
+      : setCartIndexes((prevIndexes) => [...prevIndexes, name]);
   };
 
-  const categories: string[] = items.map((item) => item.category);
+  const categories: string[] = items?.map((item) => item.category);
   const uniqueCategories: string[] = Array.from(new Set(categories));
   const convertedPriceRange =
     filterState === "price-range"
@@ -50,7 +51,7 @@ export default function App() {
       : [];
 
   const filtered = [...items]
-    .filter((item) =>
+    ?.filter((item) =>
       filter && filter !== "All"
         ? filterState === "category"
           ? item.category.toLowerCase() === filter.toLowerCase()
@@ -60,14 +61,14 @@ export default function App() {
           : item
         : item
     )
-    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
-    .slice(page.start, page.end);
+    ?.sort((a, b) => b?.createdAt.localeCompare(a?.createdAt))
+    ?.slice(page.start, page.end);
 
-  const sortOldestToNewest = [...filtered].sort((a, b) =>
+  const sortOldestToNewest = [...filtered]?.sort((a, b) =>
     a.createdAt.localeCompare(b.createdAt)
   );
 
-  const sortAscending = [...filtered].slice().sort((a, b) => {
+  const sortAscending = [...filtered]?.slice()?.sort((a, b) => {
     const nameA = a.name.toLowerCase();
     const nameB = b.name.toLowerCase();
     if (nameA < nameB) {
@@ -79,7 +80,7 @@ export default function App() {
     return 0;
   });
 
-  const sortDescending = [...filtered].slice().sort((a, b) => {
+  const sortDescending = [...filtered]?.slice()?.sort((a, b) => {
     const nameA = a.name.toLowerCase();
     const nameB = b.name.toLowerCase();
     if (nameA > nameB) {
@@ -99,26 +100,33 @@ export default function App() {
       : selected === "Oldest - Newest"
       ? sortOldestToNewest
       : filtered;
+
   const pages: any = items
-    .map((item, index) => index % 5 === 0 && index)
-    .filter((item) => item !== false);
+    ?.map((item, index) => item && index % 5 === 0 && index)
+    ?.filter((item) => item !== false);
 
   useEffect(() => {
     // saveProduct(products)
     const getAllProducts = async () => {
-      const allProducts = await getProducts();
-      setItems(allProducts);
+      try {
+        const allProducts = await getProducts();
+        if (allProducts) {
+          setItems(allProducts);
+        }
+      } catch (error) {
+        console.error(error);
+      }
     };
     getAllProducts();
-  }, [items]);
+  }, []);
 
   return (
     <View style={styles.container}>
       <View style={styles.iconWrapper}>
         <Icon style={styles.icon} name="shopping-cart" />
-        <Text style={styles.counter}>
-          {cartIndexes.length > 0 && cartIndexes.length}
-        </Text>
+        {cartIndexes.length > 0 && (
+          <Text style={styles.counter}>{cartIndexes?.length}</Text>
+        )}
       </View>
       <View style={styles.controllers}>
         <Sort
@@ -134,24 +142,25 @@ export default function App() {
       </View>
       <Pagination
         numbers={[...pages]}
-        onClick={(page: number) => handlePages(page)}
+        onClick={(page: number, index: number) => handlePages(page, index)}
+        currentPage={currentPage}
       />
       {filtered.length === 0 && (
         <Text>No Items Match this {filter ? "filter" : "sort"} value</Text>
       )}
       <FlatList
         data={finalArr}
-        renderItem={({ item, index }) => (
+        renderItem={({ item }) => (
           <ProductCard
             bgImg={item.imageUrl}
             name={item.name}
             category={item.category}
             price={`₦${item.price}`}
-            index={index}
-            onPressAddToCart={(index: number) => handleCartIndexes(index)}
+            onPressAddToCart={(name: string) => handleCartIndexes(name)}
+            nameArr={cartIndexes}
           />
         )}
-        keyExtractor={(item: any) => item.id}
+        keyExtractor={(item: any) => item?.id}
         style={styles.list}
         ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
       />
@@ -189,12 +198,17 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "flex-end",
     width: 323,
-    position: "relative",
   },
   icon: { fontSize: 16 },
   counter: {
     position: "absolute",
     top: -10,
-    right: -8,
+    right: -10,
+    color: "#fff",
+    backgroundColor: "#33CC33",
+    width: 16,
+    height: 16,
+    textAlign: "center",
+    borderRadius: 8,
   },
 });

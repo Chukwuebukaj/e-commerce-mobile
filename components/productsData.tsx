@@ -11,219 +11,194 @@ export interface ProductsProps {
   createdAt: string;
 }
 
-/**Certainly, here are 22 unique timestamps in the format you specified:
-
-1. 2023-10-19T08:20:15.123+00:00
-2. 2023-10-19T09:35:42.987+00:00
-3. 2023-10-19T10:50:21.234+00:00
-4. 2023-10-19T12:05:03.876+00:00
-5. 2023-10-19T13:20:29.543+00:00
-6. 2023-10-19T14:35:17.765+00:00
-7. 2023-10-19T15:50:50.321+00:00
-8. 2023-10-19T17:05:08.432+00:00
-9. 2023-10-19T18:20:39.999+00:00
-10. 2023-10-19T19:35:59.111+00:00
-11. 2023-10-19T20:50:02.888+00:00
-12. 2023-10-19T22:05:47.222+00:00
-13. 2023-10-20T08:20:13.444+00:00
-14. 2023-10-20T09:35:56.789+00:00
-15. 2023-10-20T10:50:24.333+00:00
-16. 2023-10-20T12:05:09.111+00:00
-17. 2023-10-20T13:20:35.777+00:00
-18. 2023-10-20T14:35:58.999+00:00
-19. 2023-10-20T15:50:42.666+00:00
-20. 2023-10-20T17:05:22.888+00:00
-21. 2023-10-20T18:20:17.222+00:00
-22. 2023-10-20T19:35:49.555+00:00 */
-
 export const products: ProductsProps[] = [
   {
     id: uuid.v4(),
-    name: "Product 1",
+    name: "Apples",
     price: 2999,
-    category: "Electronics",
+    category: "Fruits",
     imageUrl: images.image1,
     createdAt: "2023-10-19T08:20:15.123+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 2",
+    name: "Maize",
     price: 3999,
-    category: "Clothing",
+    category: "Grains",
     imageUrl: images.image2,
     createdAt: "2023-10-19T09:35:42.987+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 50",
+    name: "Avocado",
     price: 7999,
-    category: "Home Decor",
+    category: "Fruits",
     imageUrl: images.image3,
     createdAt: "2023-10-19T10:50:21.234+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 51",
+    name: "Garlic",
     price: 4999,
-    category: "Electronics",
+    category: "Veggies",
     imageUrl: images.image4,
     createdAt: "2023-10-19T12:05:03.876+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 52",
+    name: "Ginger",
     price: 5999,
-    category: "Clothing",
+    category: "Veggies",
     imageUrl: images.image5,
     createdAt: "2023-10-19T13:20:29.543+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 53",
+    name: "Strawberries",
     price: 6999,
-    category: "Home Decor",
+    category: "Fruits",
     imageUrl: images.image6,
     createdAt: "2023-10-19T14:35:17.765+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 54",
+    name: "Coconuts",
     price: 9999,
-    category: "Electronics",
+    category: "Fruits",
     imageUrl: images.image7,
     createdAt: "2023-10-19T15:50:50.321+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 55",
+    name: "Bananas",
     price: 7999,
-    category: "Clothing",
+    category: "Fruits",
     imageUrl: images.image8,
     createdAt: "2023-10-19T17:05:08.432+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 56",
+    name: "Blueberries",
     price: 8999,
-    category: "Home Decor",
+    category: "Fruits",
     imageUrl: images.image9,
     createdAt: "2023-10-19T18:20:39.999+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 57",
+    name: "Lemon",
     price: 6999,
-    category: "Electronics",
+    category: "Fruits",
     imageUrl: images.image10,
     createdAt: "2023-10-19T19:35:59.111+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 58",
+    name: "Tangerine",
     price: 5999,
-    category: "Clothing",
+    category: "Fruits",
     imageUrl: images.image11,
     createdAt: "2023-10-19T20:50:02.888+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 59",
+    name: "Wheat",
     price: 8999,
-    category: "Home Decor",
+    category: "Grains",
     imageUrl: images.image12,
     createdAt: "2023-10-19T22:05:47.222+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 60",
+    name: "Pepper",
     price: 3999,
-    category: "Electronics",
+    category: "Veggies",
     imageUrl: images.image13,
     createdAt: "2023-10-20T08:20:13.444+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 61",
-    price: 550.0, // 55.00 in thousands
-    category: "Electronics",
+    name: "Tomatoes",
+    price: 550.0, 
+    category: "Fruits",
     imageUrl: images.image14,
     createdAt: "2023-10-20T09:35:56.789+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 62",
-    price: 670.0, // 67.00 in thousands
-    category: "Clothing",
+    name: "Onions",
+    price: 670.0, 
+    category: "Veggies",
     imageUrl: images.image15,
     createdAt: "2023-10-20T10:50:24.333+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 63",
-    price: 780.0, // 78.00 in thousands
-    category: "Home Decor",
+    name: "Irish Potato",
+    price: 780.0, 
+    category: "Tubers",
     imageUrl: images.image16,
     createdAt: "2023-10-20T12:05:09.111+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 64",
-    price: 930.0, // 93.00 in thousands
-    category: "Electronics",
+    name: "Cucumber",
+    price: 930.0, 
+    category: "Veggies",
     imageUrl: images.image17,
     createdAt: "2023-10-20T13:20:35.777+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 65",
-    price: 450.0, // 45.00 in thousands
-    category: "Clothing",
+    name: "Cabbage",
+    price: 450.0, 
+    category: "Veggies",
     imageUrl: images.image18,
     createdAt: "2023-10-20T14:35:58.999+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 66",
-    price: 880.0, // 88.00 in thousands
-    category: "Home Decor",
+    name: "Beans and Corn",
+    price: 880.0, 
+    category: "Grains",
     imageUrl: images.image19,
     createdAt: "2023-10-20T15:50:42.666+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 67",
-    price: 520.0, // 52.00 in thousands
-    category: "Electronics",
+    name: "Sea foods",
+    price: 520.0, 
+    category: "Frozen Foods",
     imageUrl: images.image20,
     createdAt: "2023-10-20T17:05:22.888+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 68",
-    price: 760.0, // 76.00 in thousands
-    category: "Clothing",
+    name: "Beef",
+    price: 760.0, 
+    category: "Frozen Foods",
     imageUrl: images.image21,
     createdAt: "2023-10-20T18:20:17.222+00:00",
   },
   {
     id: uuid.v4(),
-    name: "Product 69",
-    price: 880.0, // 88.00 in thousands
-    category: "Home Decor",
+    name: "Hamper",
+    price: 880.0, 
+    category: "Specials",
     imageUrl: images.image22,
     createdAt: "2023-10-20T19:35:49.555+00:00",
   },
   // {
   //   id: uuid.v4(),
   //   name: "Product 70",
-  //   price: 930.0, // 93.00 in thousands
+  //   price: 930.0, 
   //   category: "Electronics",
   //   imageUrl: images.image23,
   // },
   // {
   //   id: uuid.v4(),
   //   name: "Product 71",
-  //   price: 64000, // 64.00 in thousands
+  //   price: 64000, 
   //   category: "Clothing",
   //   imageUrl: images.image24,
   // },

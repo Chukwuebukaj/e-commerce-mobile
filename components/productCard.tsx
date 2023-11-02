@@ -7,15 +7,14 @@ import {
   ImageSourcePropType,
   Pressable,
 } from "react-native";
-import styled from "styled-components/native";
 
 interface ProductCardProps {
   bgImg: ImageSourcePropType;
   name: string;
   category: string;
   price: string;
-  index: number;
-  onPressAddToCart: (index: number) => void;
+  nameArr: string[];
+  onPressAddToCart: (name: string) => void;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -23,7 +22,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   name,
   category,
   price,
-  index,
+  nameArr,
   onPressAddToCart,
 }) => {
   return (
@@ -32,8 +31,21 @@ const ProductCard: React.FC<ProductCardProps> = ({
       <Text>{name}</Text>
       <Text>{category}</Text>
       <Text>{price}</Text>
-      <Pressable style={styles.button} onPress={() => onPressAddToCart(index)}>
-        <Text style={styles.btnText}>Add to Cart</Text>
+      <Pressable
+        style={[
+          styles.button,
+          { backgroundColor: nameArr.includes(name) ? "#fff" : "#33CC33" },
+        ]}
+        onPress={() => onPressAddToCart(name)}
+      >
+        <Text
+          style={[
+            styles.btnText,
+            { color: nameArr.includes(name) ? "#33CC33" : "#fff" },
+          ]}
+        >
+          {`${nameArr.includes(name) ? "Remove from" : "Add to"} Cart`}
+        </Text>
       </Pressable>
     </View>
   );
@@ -56,9 +68,12 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: "#33CC33",
+    // backgroundColor: "#33CC33",
     padding: 8,
     borderRadius: 2,
+    borderColor: "#33CC33",
+    borderWidth: 1,
+    borderStyle: "solid",
   },
 
   btnText: {

@@ -21,7 +21,7 @@ const Sort: React.FC<SortProps> = ({ onSelectOption, selected }) => {
         onValueChange={(itemValue: string) => onSelectOption(itemValue)}
       >
         <Picker.Item label="Select an option" value="" />
-        {sortOptions.map((option) => (
+        {sortOptions?.map((option) => (
           <Picker.Item key={option} label={option} value={option} />
         ))}
       </Picker>
