@@ -119,7 +119,6 @@ export default function App() {
     };
     getAllProducts();
   }, []);
-console.log(items);
 
   return (
     <View style={styles.container}>
