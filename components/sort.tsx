@@ -36,12 +36,13 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "flex-end",
     gap: 8,
+    width: "100%",
   },
 
   picker: {
     width: "70%",
-    height: 32,
     backgroundColor: "#fff",
     padding: 0,
   },

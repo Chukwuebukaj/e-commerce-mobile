@@ -178,8 +178,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 16,
-    padding: 16,
-    marginTop: 32,
+    paddingTop: 32,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingBottom: 8,
   },
 
   list: {
