@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^19.0.0",
-    "@react-native-async-storage/async-storage": "^1.19.3",
-    "@react-native-picker/picker": "^2.5.1",
+    "@react-native-async-storage/async-storage": "1.18.2",
+    "@react-native-picker/picker": "2.4.10",
     "babel-plugin-styled-components": "^2.1.4",
     "expo": "~49.0.15",
     "expo-status-bar": "~1.6.0",
