@@ -1,9 +1,14 @@
 import storage from "./storage";
-export const saveProduct = (data: any) => {
-  storage.save({
-    key: "products",
-    data: data,
-  });
+
+export const saveProduct = async (data: any) => {
+  try {
+    await storage.save({
+      key: "products",
+      data: data,
+    });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const getProducts = () => {

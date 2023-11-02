@@ -106,9 +106,9 @@ export default function App() {
     ?.filter((item) => item !== false);
 
   useEffect(() => {
-    // saveProduct(products)
     const getAllProducts = async () => {
       try {
+        await saveProduct(products);
         const allProducts = await getProducts();
         if (allProducts) {
           setItems(allProducts);
@@ -119,6 +119,7 @@ export default function App() {
     };
     getAllProducts();
   }, []);
+console.log(items);
 
   return (
     <View style={styles.container}>
