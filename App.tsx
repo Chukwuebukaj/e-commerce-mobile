@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { getProducts, saveProduct } from "./helpers";
@@ -125,7 +124,9 @@ export default function App() {
       <View style={styles.iconWrapper}>
         <Icon style={styles.icon} name="shopping-cart" />
         {cartIndexes.length > 0 && (
-          <Text style={styles.counter}>{cartIndexes?.length}</Text>
+          <View style={styles.counter}>
+            <Text style={{ color: "#fff" }}>{cartIndexes?.length}</Text>
+          </View>
         )}
       </View>
       <View style={styles.controllers}>
@@ -173,14 +174,12 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     flex: 1,
-    flexWrap: "wrap",
     backgroundColor: "#F1F1F1",
     alignItems: "center",
     justifyContent: "center",
-    borderStyle: "solid",
-    borderWidth: 1,
     gap: 16,
     padding: 16,
+    marginTop: 32,
   },
 
   list: {
@@ -192,23 +191,27 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "flex-end",
     gap: 16,
+    width: "100%",
   },
   iconWrapper: {
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-end",
-    width: 323,
+    width: "100%",
+    paddingRight: 8,
   },
   icon: { fontSize: 16 },
   counter: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     position: "absolute",
     top: -10,
     right: -10,
-    color: "#fff",
     backgroundColor: "#33CC33",
-    width: 16,
-    height: 16,
-    textAlign: "center",
-    borderRadius: 8,
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    zIndex: 100,
   },
 });

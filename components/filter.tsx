@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
@@ -62,6 +62,7 @@ const Filter: React.FC<FilterProps> = ({
           ))}
         </View>
         <Picker
+          style={styles.picker}
           selectedValue={selected}
           onValueChange={(itemValue: string) => onSelectOption(itemValue)}
         >
@@ -88,8 +89,9 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "row",
-    // alignItems: "center",
+    justifyContent: "flex-end",
     gap: 8,
+    width: "100%",
   },
 
   filters: {
@@ -102,18 +104,19 @@ const styles = StyleSheet.create({
   selectors: {
     display: "flex",
     flexDirection: "column",
+    width: "70%",
     gap: 8,
   },
   button: {
-    // backgroundColor: "#fff",
     padding: 4,
-    // borderColor: "#33CC33",
     borderWidth: 1,
-    // borderStyle: "solid",
     borderRadius: 2,
   },
-
-  btnText: {},
+  picker: {
+    width: "100%",
+    backgroundColor: "#fff",
+    padding: 0,
+  },
 });
 
 export default Filter;

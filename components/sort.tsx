@@ -17,6 +17,8 @@ const Sort: React.FC<SortProps> = ({ onSelectOption, selected }) => {
     <View style={styles.container}>
       <Text>Sort:</Text>
       <Picker
+        mode="dropdown"
+        style={styles.picker}
         selectedValue={selected}
         onValueChange={(itemValue: string) => onSelectOption(itemValue)}
       >
@@ -35,6 +37,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
+  },
+
+  picker: {
+    width: "70%",
+    height: 32,
+    backgroundColor: "#fff",
+    padding: 0,
   },
 });
 
